@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nordeste: Entre o Estereótipo e a Potência</title>
+    <style>
+        /* Variáveis de cores inspiradas no Nordeste */
+        :root {
+            --azul-ceu: #4A90E2;
+            --laranja-sol: #F5A623;
+            --verde-caatinga: #7ED321;
+            --marrom-terra: #8B4513;
+            --amarelo-ouro: #FFD700;
+            --vermelho-artesanal: #D0021B;
+            --roxo-jasmin: #9013FE;
+            --branco: #FFFFFF;
+            --preto: #333333;
+            --cinza-claro: #F9F9F9;
+        }
+        
+        /* Reset e estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--preto);
+            background-color: var(--cinza-claro);
+            overflow-x: hidden;
+        }
+        
+        /* Tipografia */
+        h1, h2, h3, h4 {
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            color: var(--marrom-terra);
+        }
+        
+        h3 {
+            font-size: 1.8rem;
+            color: var(--laranja-sol);
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Layout principal */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Cabeçalho com efeito parallax */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, var(--azul-ceu) 0%, var(--laranja-sol) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://placeholder-image-service.onrender.com/image/1200x800?prompt=A%20vibrant%20aerial%20view%20of%20the%20Brazilian%20Northeast%20landscape%20with%20colorful%20houses,%20cactus,%20and%20sunny%20skies&id=hero-bg&customer_id=cus_SsGUWeSyzZmZuI');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: -1;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        /* Navegação fixa colorida */
+        nav {
+            position: sticky;
+            top: 0;
+            background: linear-gradient(90deg, var(--laranja-sol) 0%, var(--vermelho-artesanal) 100%);
+            padding: 1rem 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            margin: 0 1rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        /* Seções com cores alternadas */
+        section {
+            padding: 5rem 0;
+        }
+        
+        section:nth-child(even) {
+            background-color: var(--cinza-claro);
+        }
+        
+        section:nth-child(odd) {
+            background-color: white;
+        }
+        
+        /* Cards interativos */
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            width: 300px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .card-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .card:hover .card-img img {
+            transform: scale(1.1);
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+        }
+        
+        .card h3 {
+            margin-top: 0;
+            color: var(--marrom-terra);
+        }
+        
+        /* Tabelas estilizadas */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        
+        th {
+            background-color: var(--azul-ceu);
+            color: white;
+            font-weight: bold;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8f8f8;
+        }
+        
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        
+        /* Elementos de destaque */
+        .highlight {
+            background: linear-gradient(120deg, var(--amarelo-ouro) 0%, var(--laranja-sol) 100%);
+            padding: 3rem;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+            margin: 3rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        /* Timeline interativa */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 3rem auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--laranja-sol);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            width: 50%;
+            padding: 10px 40px;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .timeline-content::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 4px solid var(--laranja-sol);
+            border-radius: 50%;
+            top: 15px;
+            right: -12px;
+            z-index: 1;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content::after {
+            left: -12px;
+        }
+        
+        /* Infográficos */
+        .infographic {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 3rem 0;
+        }
+        
+        .infographic-item {
+            text-align: center;
+            width: 200px;
+            margin: 1rem;
+        }
+        
+        .infographic-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--vermelho-artesanal);
+            margin-bottom: 0.5rem;
+        }
+        
+        .infographic-label {
+            font-size: 1.1rem;
+            color: var(--preto);
+        }
+        
+        /* Botões coloridos */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: var(--laranja-sol);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            margin: 0.5rem;
+        }
+        
+        .btn:hover {
+            background: var(--vermelho-artesanal);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--laranja-sol);
+            color: var(--laranja-sol);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--laranja-sol);
+            color: white;
+        }
+        
+        /* Galeria de imagens */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            height: 250px;
+            cursor: pointer;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        /* Animações de entrada */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Footer colorido */
+        footer {
+            background: linear-gradient(90deg, var(--azul-ceu) 0%, var(--roxo-jasmin) 100%);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .social-links {
+            margin: 1.5rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--amarelo-ouro);
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 0.5rem 0;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-content::after {
+                left: -12px !important;
+                right: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Nordeste</h1>
+            <h2 class="subtitle">Entre o Estereótipo e a Potência</h2>
+            <p>Uma análise do preconceito regional no Brasil</p>
+            <a href="#introducao" class="btn">Explorar Conteúdo</a>
+        </div>
+    </header>
+
+    <!-- Navegação -->
+    <nav>
+        <ul>
+            <li><a href="#introducao">Introdução</a></li>
+            <li><a href="#historico">Contexto Histórico</a></li>
+            <li><a href="#preconceito">Preconceito Moderno</a></li>
+            <li><a href="#dados">Dados e Estatísticas</a></li>
+            <li><a href="#educacao">Potência Educacional</a></li>
+            <li><a href="#cultura">Potência Cultural</a></li>
+        </ul>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <main>
+        <!-- Introdução -->
+        <section id="introducao" class="container fade-in">
+            <h2>Sumário Executivo</h2>
+            <p>Este relatório apresenta uma análise aprofundada do preconceito persistente contra a região Nordeste do Brasil, argumentando que se trata de uma construção sócio-histórica profundamente enraizada e empiricamente falsa.</p>
+            
+            <div class="highlight">
+                <h3>A dicotomia gritante</h3>
+                <p>Entre os estereótipos pejorativos — que associam a região à pobreza, ignorância e subdesenvolvimento — e a realidade documentada do Nordeste como um centro cultural vibrante, uma potência econômica emergente e um líder nacional em educação pública.</p>
+            </div>
+            
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-img">
+                        <img src="https://placeholder-image-service.onrender.com/image/400x300?prompt=Vibrant%20Northeast%20Brazilian%20culture%20with%20colorful%20costumes,%20music,%20and%20dance&id=card1&customer_id=cus_SsGUWeSyzZmZuI" alt="Cultura nordestina vibrante com dança e música">
+                    </div>
+                    <div class="card-content">
+                        <h3>Potência Cultural</h3>
+                        <p>O Nordeste como berço das mais autênticas expressões da cultura brasileira.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-img">
+                        <img src="https://placeholder-image-service.onrender.com/image/400x300?prompt=Modern%20Northeast%20Brazil%20with%20technology%20and%20innovation&id=card2&customer_id=cus_SsGUWeSyzZmZuI" alt="Nordeste moderno com tecnologia e inovação">
+                    </div>
+                    <div class="card-content">
+                        <h3>Potência Econômica</h3>
+                        <p>Crescimento acima da média nacional e contribuição significativa para o PIB brasileiro.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-img">
+                        <img src="https://placeholder-image-service.onrender.com/image/400x300?prompt=Students%20in%20Northeast%20Brazil%20excelling%20in%20education&id=card3&customer_id=cus_SsGUWeSyzZmZuI" alt="Estudantes nordestinos com excelência em educação">
+                    </div>
+                    <div class="card-content">
+                        <h3>Potência Educacional</h3>
+                        <p>Liderança nacional em educação pública e desempenho exemplar no ENEM.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contexto Histórico -->
+        <section id="historico" class="container fade-in">
+            <h2>A Construção Histórica de um Estigma</h2>
+            <p>O preconceito contra o povo nordestino não é um fenômeno espontâneo, mas sim o produto de um desenvolvimento histórico e econômico desigual que marcou a formação do Brasil.</p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Séculos XVI-XVIII</h3>
+                        <p>Nordeste como centro econômico do Brasil com a economia açucareira.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Século XIX</h3>
+                        <p>Transição para o ciclo do café no Sudeste e início da marginalização econômica do Nordeste.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Século XX</h3>
+                        <p>Industrialização concentrada no Sudeste e migração nordestina para centros urbanos.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Atualidade</h3>
+                        <p>Persistência do estigma apesar do dinamismo econômico e cultural da região.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="https://placeholder-image-service.onrender.com/image/400x300?prompt=Historical%20sugar%20cane%20plantation%20in%20Northeast%20Brazil&id=hist1&customer_id=cus_SsGUWeSyzZmZuI" alt="Plantação histórica de cana-de-açúcar no Nordeste">
+                    <div class="gallery-caption">Economia açucareira: Primeiro ciclo econômico do Brasil</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://placeholder-image-service.onrender.com/image/400x300?prompt=Drought%20in%20Northeast%20Brazil%20and%20migration&id=hist2&customer_id=cus_SsGUWeSyzZmZuI" alt="Seca no Nordeste e migração">
+                    <div class="gallery-caption">Êxodo rural: Migração em busca de melhores condições</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://placeholder-image-service.onrender.com/image/400x300?prompt=Northeast%20workers%20in%20Southeast%20Brazil&id=hist3&customer_id=cus_SsGUWeSyzZmZuI" alt="Trabalhadores nordestinos no Sudeste">
+                    <div class="gallery-caption">Contribuição nordestina para o desenvolvimento industrial</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Preconceito Moderno -->
+        <section id="preconceito" class="container fade-in">
+            <h2>A Anatomia do Preconceito Moderno</h2>
+            <p>Das origens históricas, o preconceito contra o Nordeste evoluiu e se adaptou aos novos tempos, manifestando-se de forma explícita no ambiente digital e de maneira insidiosa nas representações culturais.</p>
+            
+            <div class="infographic">
+                <div class="infographic-item">
+                    <div class="infographic-number">874%</div>
+                    <div class="infographic-label">Aumento nas denúncias de xenofobia online (2021-2022)</div>
+                </div>
+                <div class="infographic-item">
+                    <div class="infographic-number">348</div>
+                    <div class="infographic-label">Denúncias em um único dia após eleições de 2022</div>
+                </div>
+                <div class="infographic-item">
+                    <div class="infographic-number">100%</div>
+                    <div class="infographic-label">Crime reconhecido como racismo pelo STJ</div>
+                </div>
+            </div>
+            
+            <div class="highlight">
+                <h3>Marco Legal Importante</h3>
+                <p>O Superior Tribunal de Justiça (STJ) enquadrou a discriminação por procedência regional, especificamente contra nordestinos, como crime de racismo, previsto na Lei nº 7.716/89.</p>
+                <p>Essa decisão reconhece juridicamente que o preconceito vai além de uma mera "rixa regional" e possui um "caráter eugênico", enraizado em hierarquias de base racial e étnico-geográfica.</p>
+            </div>
+        </section>
+
+        <!-- Dados e Estatísticas -->
+        <section id="dados" class="container fade-in">
+            <h2>Realidade Socioeconômica Para Além do Clichê</h2>
+            <p>Os estereótipos que pintam o Nordeste como uma região economicamente estagnada e uniformemente pobre desmoronam quando confrontados com dados oficiais.</p>
+            
+            <h3>Indicadores Socioeconômicos Comparativos (2020-2022)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Indicador</th>
+                        <th>Nordeste</th>
+                        <th>Sudeste</th>
+                        <th>Sul</th>
+                        <th>Norte</th>
+                        <th>Centro-Oeste</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Participação no PIB (2020)</td>
+                        <td>14,2%</td>
+                        <td>52,9%</td>
+                        <td>17,4%</td>
+                        <td>6,0%</td>
+                        <td>9,5%</td>
+                    </tr>
+                    <tr>
+                        <td>Crescimento do PIB (2022)</td>
+                        <td>3,4%</td>
+                        <td>2,8%</td>
+                        <td>3,1%</td>
+                        <td>2,3%</td>
+                        <td>3,0%</td>
+                    </tr>
+                    <tr>
+                        <td>PIB per capita (Média 2002-2020)</td>
+                        <td>R$ 16.900</td>
+                        <td>R$ 40.800</td>
+                        <td>R$ 38.300</td>
+                        <td>R$ 22.400</td>
+                        <td>R$ 41.000</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Dinamismo Econômico</h3>
+                        <p>Em 2022, a economia nordestina expandiu 3,4%, superior à média nacional de 2,9%.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Previsão Otimista</h3>
+                        <p>Estudos do Ipea projetam crescimento acima da média brasileira até 2030.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Potência Educacional -->
+        <section id="educacao" class="container fade-in">
+            <h2>Potência Educacional: Excelência no Ensino Público</h2>
+            <p>Dados oficiais do Ministério da Educação posicionam a região não como um problema educacional, mas como uma vanguarda nacional em políticas de educação básica.</p>
+            
+            <div class="infographic">
+                <div class="infographic-item">
+                    <div class="infographic-number">36/50</div>
+                    <div class="infographic-label">Municípios com melhor Ideb são nordestinos</div>
+                </div>
+                <div class="infographic-item">
+                    <div class="infographic-number">25/60</div>
+                    <div class="infographic-label">Notas máximas no ENEM 2023 foram do Nordeste</div>
+                </div>
+                <div class="infographic-item">
+                    <div class="infographic-number">100%</div>
+                    <div class="infographic-label">Inscrição de concluintes da rede pública no ENEM 2024</div>
+                </div>
+            </div>
+            
+            <div class="highlight">
+                <h3>Destaque Cearense</h3>
+                <p>O Ceará se tornou um modelo nacional, com 20 municípios entre os 50 melhores no Ideb e 87 das 100 melhores escolas públicas dos anos iniciais em 2021.</p>
+            </div>
+            
+            <h3>Desempenho na Redação do ENEM por Região</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Região</th>
+                        <th>Notas 1000 (2023)</th>
+                        <th>Notas 980-1000 (2024)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Nordeste</td>
+                        <td>25</td>
+                        <td>929</td>
+                    </tr>
+                    <tr>
+                        <td>Sudeste</td>
+                        <td>18</td>
+                        <td>858</td>
+                    </tr>
+                    <tr>
+                        <td>Sul</td>
+                        <td>7</td>
+                        <td>208</td>
+                    </tr>
+                    <tr>
+                        <td>Norte</td>
+                        <td>5</td>
+                        <td>174</td>
+                    </tr>
+                    <tr>
+                        <td>Centro-Oeste</td>
+                        <td>5</td>
+                        <td>139</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Potência Cultural -->
+        <section id="cultura" class="container fade-in">
+            <h2>Potência Cultural, Científica e Humana</h2>
+            <p>O Nordeste é uma fonte vital da identidade brasileira, um polo de produção de conhecimento e o berço de personalidades que moldaram a nação.</p>
+            
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="https://placeholder-image-service.onrender.com/image/400x300?prompt=Forro%20music%20and%20dance%20in%20Northeast%20Brazil&id=cult1&customer_id=cus_SsGUWeSyzZmZuI" alt="Forró nordestino com música e dança">
+                    <div class="gallery-caption">Forró: Patrimônio cultural imaterial do Brasil</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://placeholder-image-service.onrender.com/image/400x300?prompt=Frevo%20dance%20in%20Pernambuco,%20Brazil&id=cult2&customer_id=cus_SsGUWeSyzZmZuI" alt="Frevo pernambucano com dançarinos coloridos">
+                    <div class="gallery-caption">Frevo: Reconhecido pela UNESCO como Patrimônio da Humanidade</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://placeholder-image-service.onrender.com/image/400x300?prompt=Junina%20festival%20in%20Northeast%20Brazil&id=cult3&customer_id=cus_SsGUWeSyzZmZuI" alt="Festas juninas no Nordeste">
+                    <div class="gallery-caption">Festas Juninas: As maiores celebrações do gênero no mundo</div>
+                </div>
+            </div>
+            
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-img">
+                        <img src="https://placeholder-image-service.onrender.com/image/400x300?prompt=Paulo%20Freire,%20Brazilian%20educator&id=person1&customer_id=cus_SsGUWeSyzZmZuI" alt="Paulo Freire, educador brasileiro">
+                    </div>
+                    <div class="card-content">
+                        <h3>Paulo Freire</h3>
+                        <p>Pernambucano, patrono da educação brasileira, método pedagógico revolucionário estudado mundialmente.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-img">
+                        <img src="https://placeholder-image-service.onrender.com/image/400x300?prompt=Luiz%20Gonzaga,%20King%20of%20Baião&id=person2&customer_id=cus_SsGUWeSyzZmZuI" alt="Luiz Gonzaga, rei do baião">
+                    </div>
+                    <div class="card-content">
+                        <h3>Luiz Gonzaga</h3>
+                        <p>Pernambucano, "Rei do Baião", levou a cultura nordestina para todo o país.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-img">
+                        <img src="https://placeholder-image-service.onrender.com/image/400x300?prompt=Jorge%20Amado,%20Brazilian%20writer&id=person3&customer_id=cus_SsGUWeSyzZmZuI" alt="Jorge Amado, escritor brasileiro">
+                    </div>
+                    <div class="card-content">
+                        <h3>Jorge Amado</h3>
+                        <p>Baiano, um dos maiores escritores brasileiros, traduzido para inúmeros idiomas.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="highlight">
+                <h3>Polo Científico e Tecnológico</h3>
+                <p>Universidades nordestinas figuram entre as melhores do Brasil e América Latina, com destaque para UFC, UFPE e UFPB em rankings internacionais.</p>
+                <p>A expansão dos Institutos Federais (38 dos 100 novos campi no Nordeste) impulsiona inovação e desenvolvimento regional.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="footer-content container">
+            <h2>Nordeste: De Problema a Potência</h2>
+            <p>Combater o preconceito contra o Nordeste não é apenas uma questão de justiça social e reparação histórica; é uma condição necessária para que o Brasil possa realizar seu pleno potencial como uma nação verdadeiramente integrada e equitativa.</p>
+            
+            <div class="social-links">
+                <a href="#" aria-label="Compartilhar no Facebook">📱</a>
+                <a href="#" aria-label="Compartilhar no Twitter">🐦</a>
+                <a href="#" aria-label="Compartilhar no Instagram">📸</a>
+            </div>
+            
+            <p>© 2023 - Nordeste: Entre o Estereótipo e a Potência</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript para interatividade -->
+    <script>
+        // Animação de elementos ao rolar a página
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+            
+            // Navegação suave
+            document.querySelectorAll('nav a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Interatividade nas tabelas
+            const tables = document.querySelectorAll('table');
+            tables.forEach(table => {
+                table.addEventListener('mouseover', function(e) {
+                    if (e.target.tagName === 'TD') {
+                        e.target.parentElement.style.backgroundColor = '#e8f4f8';
+                    }
+                });
+                
+                table.addEventListener('mouseout', function(e) {
+                    if (e.target.tagName === 'TD') {
+                        const row = e.target.parentElement;
+                        const index = Array.from(row.parentElement.children).indexOf(row);
+                        row.style.backgroundColor = index % 2 === 0 ? '#f8f8f8' : 'white';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
